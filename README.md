@@ -23,7 +23,7 @@ The multi-tenancy SaaS solution offered to Social Security Bureau, for identity 
 
 ## Running Locally
 
-Make sure you have Apache Maven installed locally. Download the source code and execute maven command: 
+Make sure you have Apache Maven installed locally. Download the source code and execute below Maven command in the root folder:
 
 ```
 mvn package
