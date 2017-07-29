@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+						http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+						http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd"
+	default-autowire="byName">
+
+	<context:component-scan base-package="cn.ezid.cert">
+	</context:component-scan>
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	
+	<import resource="security-context.xml" />
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8"/>	
+	</bean>
+		
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"	destroy-method="close">
+		<property name="driverClass" value="${JDBC.Platform.Driver}" />
+		<property name="jdbcUrl" value="${JDBC.Platform.URL}" />
+		<property name="user" value="${JDBC.Platform.User}" />
+		<property name="password" value="${JDBC.Platform.Password}" />
+		<property name="minPoolSize" value="${JDBC.Platform.MinPoolSize}" />
+		<property name="maxPoolSize" value="${JDBC.Platform.MaxPoolSize}" />
+		<property name="initialPoolSize" value="${JDBC.Platform.InitialPoolSize}" />
+		<property name="maxIdleTime" value="${JDBC.Platform.MaxIdleTime}" />
+		<property name="acquireIncrement" value="${JDBC.Platform.AcquireIncrement}" />
+		<property name="acquireRetryAttempts" value="${JDBC.Platform.AcquireRetryAttempts}" />
+		<property name="acquireRetryDelay" value="${JDBC.Platform.AcquireRetryDelay}" />
+		<property name="idleConnectionTestPeriod" value="${JDBC.Platform.IdleConnectionTestPeriod}" />
+		<property name="checkoutTimeout" value="${JDBC.Platform.CheckoutTimeout}" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation">
+			<value>classpath:myBatisConfig.xml</value>
+		</property>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath*:cn/ezid/cert/core/**/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Transactions management -->
+	<bean name="transactionManager"	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+		<qualifier value="transactionManager" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />	
+		
+</beans>

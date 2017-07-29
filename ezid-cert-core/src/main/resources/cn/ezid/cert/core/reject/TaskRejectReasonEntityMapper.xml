@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ezid.cert.core.reject.TaskRejectReasonEntity">
+
+	<resultMap id="TaskRejectReasonResult" type="TaskRejectReasonEntity">
+		<id property="id" column="id" javaType="java.lang.Long" />
+		<result property="parentId" column="parent_id" javaType="java.lang.Long" />
+		<result property="name" column="name" javaType="java.lang.String" />
+		<result property="fullName" column="full_name" javaType="java.lang.String" />
+		<result property="timeCreated" column="time_created" javaType="java.util.Date" />
+	</resultMap>
+
+	<select id="select" resultMap="TaskRejectReasonResult">
+		select * from ezid_manual_task_reject_reason
+	</select>
+
+	<select id="getPk" parameterType="java.lang.Long" resultMap="TaskRejectReasonResult">
+		select * from ezid_manual_task_reject_reason where id=#{id}
+	</select>
+
+	<insert id="insert" parameterType="TaskRejectReasonEntity">
+		insert into	ezid_manual_task_reject_reason (name, full_name, parent_id, time_created)
+			values (#{name}, #{fullName}, #{parentId}, now())
+	</insert>
+
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from	ezid_manual_task_reject_reason where id=#{id} or parent_id=#{id}
+	</delete>
+
+	<update id="update" parameterType="TaskRejectReasonEntity">
+		update ezid_manual_task_reject_reason set name=#{name}, full_name=#{fullName},	time_updated=now()
+		where id=#{id}
+	</update>
+</mapper>

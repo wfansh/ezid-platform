@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd"
+	default-autowire="byName">
+
+	<!-- Spring security configuration -->
+    <sec:http pattern="/login" security="none"/>
+    <sec:http pattern="/jcaptcha.jpg" security="none"/>
+    <sec:http pattern="/css/**" security="none"/>
+    <sec:http pattern="/fonts/**" security="none"/>
+    <sec:http pattern="/img/**" security="none"/>
+    <sec:http pattern="/js/**" security="none"/>
+    <sec:http pattern="/res/**" security="none"/>
+	<sec:http use-expressions="true">
+		<sec:intercept-url pattern="/task/historyTask" access="hasAnyRole('admin','group_manual_certification')" />
+		<sec:intercept-url pattern="/task" access="hasAnyRole('admin','group_manual_certification')" />
+		<sec:intercept-url pattern="/task/view/*" access="hasAnyRole('admin','group_manual_certification')" />
+		<sec:intercept-url pattern="/task/reviewTask" access="hasAnyRole('admin','group_manual_certification')" />
+		<sec:intercept-url pattern="/task/completeTask" access="hasAnyRole('admin','group_manual_certification')" />
+		<sec:intercept-url pattern="/task/retrialTask" access="hasAnyRole('admin','group_manual_certification')" />
+		<sec:intercept-url pattern="/task/get_detail_video/*" access="hasAnyRole('admin','group_manual_certification')" />
+		<sec:intercept-url pattern="/task/listTask" access="hasAnyRole('admin')" />
+		<sec:intercept-url pattern="/task/assignTask" access="hasAnyRole('admin')" />
+		<sec:intercept-url pattern="/task/reject**" access="hasAnyRole('admin')" />
+		<sec:intercept-url pattern="/task/listTask" access="hasAnyRole('admin')" />
+		<!-- <sec:intercept-url pattern="/res/**" access="hasAnyRole('admin','group_manual_certification')" /> -->
+		<sec:form-login login-page="/login" default-target-url="/task" login-processing-url="/dologin"
+        	authentication-failure-url="/login?error=1"/>
+        <sec:logout logout-url="/logout" invalidate-session="true" logout-success-url="/login?logout=1" />
+        <sec:session-management>
+        	<sec:concurrency-control max-sessions="1" error-if-maximum-exceeded="false" expired-url="/login?error=2"/>
+        </sec:session-management>
+	</sec:http>
+	
+	<sec:authentication-manager>
+		<sec:authentication-provider ref='activitiAuthenticationProvider' />
+	</sec:authentication-manager>
+	
+	<bean id="activitiAuthenticationProvider" class="cn.ezid.cert.manual.ActivitiAuthenticationProvider"/>
+	
+</beans>

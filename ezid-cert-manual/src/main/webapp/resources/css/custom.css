@@ -1,0 +1,174 @@
+/***globe***/
+.table .label{
+	font-size: 100%;
+}
+
+.feed-item {
+	 padding: 12px 0 10px 40px;
+}
+
+.reset-value{
+	color:#999;
+	position: absolute;
+	bottom: 6px;
+	right:25px;
+}
+
+#footer a {
+    color: #999;
+}
+
+#footer .nav > li > a:hover {
+  color: #E5412D;
+    text-decoration: none;
+}
+
+/***main-nav***/
+#main-nav .task-count {
+    background-color: #D9534F;
+    margin-left: 10px;
+    font-size:12px;
+}
+
+/***cert/list.jsp***/
+#searchForm{
+	margin-bottom:0px;
+}
+#searchForm .row{
+	margin-bottom:5px;
+}
+#searchForm .form-group{
+	margin-bottom:5px;
+}
+#extend_search_button {
+	padding: 2px;
+	text-align:center;
+	margin-bottom: 0px;
+	background-color: #f5f5f5;
+	border-radius: 0px 0px 4px 4px;
+	width:100px;
+	clear:both;
+	margin: 0 auto;
+	cursor: pointer;
+}
+#extend_search_button span {
+	margin-right:20px;
+}
+#action_button a{
+	margin-right:10px;
+	margin-bottom:5px;
+}
+#action_button .btn-group{
+	margin-right:10px;
+	margin-bottom:5px;
+}
+#viewPageSize {
+	margin-right:10px;
+	float:left;
+	padding:4px 8px;
+	border-radius: 4px;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	border: 1px solid #ccc;
+}
+
+/***task/list.jsp***/
+.form-search{
+	margin-bottom:0px;
+}
+.form-search .row{
+	margin-bottom:5px;
+}
+.form-search .form-group{
+	margin-bottom:5px;
+}
+
+
+.dropdown-submenu{position:relative;}
+.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:0px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+.dropdown-submenu:hover>.dropdown-menu{display:block;}
+.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
+.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+
+
+
+.shenhe{
+	display:none;
+}
+.shenhe img{
+	height:240px;
+}
+.shenhe div{
+	float:left;
+	position: relative;
+	margin-right: 10px;
+}
+.shenhe span{
+	position: absolute;
+	padding: 8px;
+	width:100%;
+	bottom: 5px;
+	left:5px;
+	font-size: 16px;
+	background:rgba(255, 255, 255, 0.7)!important;
+	filter:Alpha(opacity=70); background:#fff;
+}
+.buttons a{
+	margin-right:5px;
+}
+
+#cert-events .external strong{
+	color:#428BCA;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+.dropdown-menu {
+	left: auto;
+}
+
+/***parsley-validate***/
+.parsley-errors-list{
+	padding:2px 2px 2px 5px;
+}
+.parsley-errors-list li{
+	list-style:none;
+	color:#f00;
+}
+.pwd-lable{
+    color: red;
+    font-size: 12px;
+    margin-right:10px;
+}
+
+.progress {
+    margin-bottom: 0px;
+}
+
+.howler {
+		margin: 0 .75em 1em 0;
+	}
+	
+.form-horizontal .control-label, .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline {
+    padding-top: 0px;
+}
+	
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+	margin-left: 0px;
+    margin-right: 5px;
+}
+
+.video-rotate-btn{
+	margin:5px 0 0 170px;
+	border-radius: 20px;
+	line-height: 0.5;
+	padding: 5px 6px;
+	
+}
+.video-rotate-btn:hover{
+	-webkit-animation:spin 2s infinite linear;-moz-animation:spin 2s infinite linear;-o-animation:spin 2s infinite linear;animation:spin 2s infinite linear;
+	color:#f00;
+}

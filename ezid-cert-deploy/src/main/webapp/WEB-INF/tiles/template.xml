@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base.definition" template="/WEB-INF/views/common/layout.jsp" >
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="css" value="/WEB-INF/views/common/css.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/views/common/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+		<put-attribute name="js" value="/WEB-INF/views/common/js.jsp" />
+		<put-attribute name="activeMenu" value="" cascade="true"/>
+		<put-attribute name="jsFile" value="" cascade="true"/>
+	</definition>
+	
+	<definition name="*.*" extends="base.definition" >
+		<put-attribute name="title" value="{2}" />
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="activeMenu" value="{1}" cascade="true"/>
+		<put-attribute name="jsFile" value="/js/{1}/{2}.js" cascade="true"/>
+	</definition>
+	
+</tiles-definitions>

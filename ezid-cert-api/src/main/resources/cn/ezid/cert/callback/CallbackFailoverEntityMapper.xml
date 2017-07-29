@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ezid.cert.callback.CallbackFailoverEntity">
+	<resultMap id="CallbackFailoverResult" type="CallbackFailoverEntity">
+		<id property="id" column="id" javaType="java.lang.Long" />
+		<result property="processInstanceId" column="process_instance_id" javaType="java.lang.String" />
+		<result property="callbackUrl" column="callback_url" javaType="java.lang.String" />
+		<result property="enabled" column="enabled" javaType="java.lang.Boolean" />
+		<result property="timeCreated" column="time_created" javaType="java.util.Date" />
+	</resultMap>
+
+	<select id="getPk" parameterType="java.lang.Long" resultMap="CallbackFailoverResult">
+		select * from ezid_callback_failover_exchange where id=#{id}
+	</select>
+	
+	<select id="selectByUrlPattern" parameterType="DynamicSqlParameter" resultMap="CallbackFailoverResult">
+		select * from ezid_callback_failover_exchange where callback_url like "%${pattern}" and enabled = true;
+	</select>
+
+	<insert id="insert" parameterType="CallbackFailoverEntity">
+		insert into ezid_callback_failover_exchange (process_instance_id, callback_url, enabled, time_created) 
+			values (#{processInstanceId}, #{callbackUrl}, true, now())
+	</insert>
+
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from	ezid_callback_failover_exchange where id=#{id}
+	</delete>
+
+</mapper>

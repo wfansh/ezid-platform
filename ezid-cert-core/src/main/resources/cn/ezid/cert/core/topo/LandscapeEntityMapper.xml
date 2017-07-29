@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ezid.cert.core.topo.LandscapeEntity">	
+     
+    <resultMap id="LandscapeResult" type="LandscapeEntity" >
+       <id property="id" column="id" javaType="java.lang.Long"/>
+       <result property="resourceType" column="resource_type" javaType="cn.ezid.cert.core.topo.ResourceType" />
+       <result property="resourceName" column="resource_name" javaType="java.lang.String" /> 
+       <result property="url" column="url" javaType="java.lang.String" />
+       <result property="userName" column="username" javaType="java.lang.String"/>
+       <result property="password" column="password" javaType="java.lang.String"/>
+       <result property="enabled" column="enabled" javaType="java.lang.Boolean" />
+       <result property="timeUpdated" column="time_updated" javaType="java.util.Date" />
+    </resultMap>
+   
+	<select id="getPk" parameterType="java.lang.Long" resultMap="LandscapeResult">
+		select * from ezid_platform_landscape where id = #{id}
+	</select>
+	
+	<select id="getByName" parameterType="DynamicSqlParameter" resultMap="LandscapeResult">
+		select * from ezid_platform_landscape where resource_name = #{resourceName}
+	</select>
+	
+	<select id="select" resultMap="LandscapeResult">
+		select * from ezid_platform_landscape
+	</select>
+	
+	<select id="getByType" parameterType="DynamicSqlParameter" resultMap="LandscapeResult">
+		select * from ezid_platform_landscape where resource_type = #{resourceType}
+	</select>
+	
+	<select id="getByUrl" parameterType="DynamicSqlParameter" resultMap="LandscapeResult">
+		select * from ezid_platform_landscape where lower(url) = lower(#{url})
+	</select>
+		
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="LandscapeEntity">
+		insert into ezid_platform_landscape(resource_type, resource_name, url, enabled) 
+			values (#{resourceType}, #{resourceName}, #{url}, #{enabled})
+	</insert>
+	
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from ezid_platform_landscape where id = #{id}
+	</delete>
+	
+	<update id="updateEnabled" parameterType="DynamicSqlParameter">
+		update ezid_platform_landscape set enabled = #{enabled}, time_updated = now() where id = #{id}
+	</update>
+
+	<update id="updateTimeUpdated" parameterType="DynamicSqlParameter">
+		update ezid_platform_landscape set time_updated = now() where id = #{id}
+	</update>
+	
+</mapper>

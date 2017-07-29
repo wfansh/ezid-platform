@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.ezid.cert.core.topo.TopologyEntity">	
+     
+    <resultMap id="TopologyResult"  type="TopologyEntity" >
+       <id property="id" column="id" javaType="java.lang.Long"/>
+       <result property="moduleId" column="module_id" javaType="java.lang.Long" />
+       <result property="engineId" column="engine_id" javaType="java.lang.Long" /> 
+       <result property="taskExecutorId" column="task_executor_id" javaType="java.lang.Long" />
+       <result property="userName" column="username" javaType="java.lang.String" />
+       <result property="password" column="password" javaType="java.lang.String" />
+       <result property="status" column="status" javaType="cn.ezid.cert.core.topo.MappingStatus" />
+       <result property="description" column="description" javaType="java.lang.String" />
+       <result property="timeExecuted" column="time_executed" javaType="java.util.Date" />
+       <result property="timeUpdated" column="time_updated" javaType="java.util.Date" />
+    </resultMap>
+   
+	<select id="getPk" parameterType="java.lang.Long" resultMap="TopologyResult">
+		select * from ezid_platform_topology where id = #{id}
+	</select>
+	
+	<select id="select" resultMap="TopologyResult">
+		select * from ezid_platform_topology
+	</select>
+	
+	<select id="selectByModuleId" parameterType="DynamicSqlParameter" resultMap="TopologyResult">
+		select * from ezid_platform_topology where module_id = #{moduleId}
+	</select>
+	
+	<select id="selectByEngineId" parameterType="DynamicSqlParameter" resultMap="TopologyResult">
+		select * from ezid_platform_topology where engine_id = #{engineId}
+	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="TopologyEntity">
+		insert into ezid_platform_topology(module_id, engine_id, task_executor_id, username, password, status) 
+			values (#{moduleId}, #{engineId}, #{taskExecutorId}, #{userName}, #{password}, #{status})
+	</insert>
+	
+	<delete id="delete" parameterType="java.lang.Long">
+		delete from ezid_platform_topology where id = #{id}
+	</delete>
+		
+	<update id="updateStatus" parameterType="DynamicSqlParameter">
+		update ezid_platform_topology set status = #{status}, description = #{description}, time_updated = now()
+			 where id = #{id}
+	</update>
+	
+	<update id="updateTimeUpdated" parameterType="DynamicSqlParameter">
+		update ezid_platform_topology set time_updated = now() where id = #{id}
+	</update>
+	
+	<update id="updateTimeUpdatedByModuleId" parameterType="DynamicSqlParameter">
+		update ezid_platform_topology set time_updated = now() where module_id = #{moduleId}
+	</update>
+	
+	<update id="updateTimeUpdatedByEngineId" parameterType="DynamicSqlParameter">
+		update ezid_platform_topology set time_updated = now() where engine_id = #{engineId}
+	</update>
+	
+	<update id="updateTimeExecuted" parameterType="DynamicSqlParameter">
+		update ezid_platform_topology set time_executed = now() where id = #{id}
+	</update>
+	
+	<select id="countModifiedByModuleId" resultType="java.lang.Integer" parameterType="DynamicSqlParameter">
+		select count(*) from ezid_platform_topology where module_id = #{moduleId} and time_updated > #{lastUpdate}
+	</select>
+	
+	<select id="countModifiedByEngineId" resultType="java.lang.Integer" parameterType="DynamicSqlParameter">
+		select count(*) from ezid_platform_topology where engine_id = #{engineId} and time_updated > #{lastUpdate}
+	</select>
+	
+</mapper>

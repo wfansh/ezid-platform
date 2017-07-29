@@ -1,0 +1,27 @@
+Title.Preprocess.Success=图片预处理:成功
+Title.Preprocess.Fail=图片预处理:异常
+Comment.Preprocess.Success=图片预处理完成.图片及视频缩略图已生成并保存
+Comment.Preprocess.PersonPhotoNotExist=用户照片不存在. 请查看用户详细信息，检查用户照片是否存在。确认用户照片存在后重新开始认证流程
+
+Title.Machine.Success=照片机器对比:成功
+Title.Machine.Fail=照片机器对比:异常
+Comment.Machine.PersonPhotoNotExist=照片机器对比异常. 用户照片不存在，设定为机器对比不通过，转为人工审核
+Comment.Machine.FaceNotDetected=照片机器对比异常. 用户上传的照片探测不到人脸，设定为机器对比不通过，转为人工审核
+Comment.Machine.IdcardPhotoNotExist=照片机器对比异常, 身份证照片不存在，设定为机器对比不通过，转为人工审核
+Comment.Machine.Success=照片机器对比成功. 机器对比结果值为{0}
+
+
+Title.Adapter.Success=身份证照片获取:成功
+Title.Adapter.Fail=身份证照片获取:异常
+Comment.Adapter.InfoIncomplete=认证人员信息缺失,认证人员身份证或者姓名缺失。请检查认证人员信息，确认信息存在后，重新启动流程
+Comment.Adapter.Success=用户身份信息一致
+
+Nciic.exception.title=认证异常
+Nciic.validation.inconsistent=身份证/用户姓名不一致
+Nciic.xp.unformatted=无法获取身份证照片
+
+Loong.exception.title=认证异常
+Loong.parameter.error=参数错误,身份证{0}/姓名{1}
+Loong.validation.inconsistent=身份证/用户姓名不一致
+Loong.photo.unformatted=无法获取身份证照片
+Loong.CitizenIdResult.Consistent=一致
