@@ -27,11 +27,11 @@ The multi-tenancy SaaS solution offered to Social Security Bureau, for identity 
 
 ## Projects Structure
 
-- ***ezid-cert-core:*** Maven dependency mgmt, Spring Framework, MyBatis DAO, Ali OSS wrapper, Activiti task client, configuration & NLS support
-- ***ezid-cert-activiti-extension:*** Customized Activiti BPM engine, to support modifiable historical task, task end listener HTTP callback.
-- ***ezid-cert-application & ezid-cert-manual:*** Cron-job and manual based BPM tasks processing services.
-- ***ezid-cert-deploy:*** The landscape management and monitoring platform, to deploy Activiti engines and processors according to business workload. It enables highly reliable distributed coordination. 
-- ***ezid-cert-api:*** The API SDK exposed to application tier, which can be used to submit a task.
+- **ezid-cert-core:** Maven dependency mgmt, Spring Framework, MyBatis DAO, Ali OSS wrapper, Activiti task client, configuration & NLS support
+- **ezid-cert-activiti-extension:** Customized Activiti BPM engine, to support modifiable historical task, task end listener HTTP callback.
+- **ezid-cert-application & ezid-cert-manual:** Cron-job and manual based BPM tasks processing services.
+- **ezid-cert-deploy:** The landscape management and monitoring platform, to deploy Activiti engines and processors according to business workload. It enables highly reliable distributed coordination. 
+- **ezid-cert-api:** The API SDK exposed to application tier, which can be used to submit a task.
 
 
 ## Running Locally
