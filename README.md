@@ -1,14 +1,14 @@
 
-# Web application framework for Ezid.cn
+# Web development framework for Ezid.cn
 
-A multi-tenancy web application development framework for www.ezid.cn, built upon Spring + myBatis. Fast, small and feature-rich for developers.
+A multi-tenancy web application development framework for www.ezid.cn, built upon Spring + Bootstrap + myBatis. Fast, small and feature-rich for developers.
 
 ## Technology Stack
 
 - Language & Building : Java 7, [Apache Maven](http://maven.apache.org/)
 - Container & Persistence : [Spring 4.0.5](http://spring.io/), [myBatis 3.2.7](https://github.com/mybatis/)
 - BPM & Scheduler : [Activiti 5.15](https://www.activiti.org/), [Quartz](http://www.quartz-scheduler.org/)
-- UI : [BootStrap](http://getbootstrap.com/2.3.2/) + [Apache Tiles](http://tiles.apache.org/) + [jQuery](https://jquery.com/)
+- UI : [Bootstrap](http://getbootstrap.com/2.3.2/) + [Apache Tiles](http://tiles.apache.org/) + [jQuery](https://jquery.com/)
 - Security & Roles : [Spring Security](http://projects.spring.io/spring-security/) + [Open LDAP](http://www.openldap.org/)
 - Face Recognition : [OpenBR](http://openbiometrics.org/)
 
