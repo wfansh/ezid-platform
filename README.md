@@ -1,5 +1,5 @@
 
-# Web development framework for Ezid.cn
+# Web Development Framework for Ezid.cn
 
 A multi-tenancy web application development framework for www.ezid.cn, built upon Spring + Bootstrap + myBatis. 
 Fast, small and feature-rich for developers.
